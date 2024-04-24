@@ -2,6 +2,7 @@ package ru.ap1kkk.elements;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.log4j.Logger;
 import ru.ap1kkk.ports.Port;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class Receiver extends Element {
     @JsonProperty("processRate")
     private final Integer processRate;
 
-    private int currentValue = 0;
+    private int currentLoad = 0;
 
     private Receiver() {
         super(null, null, null);
@@ -42,14 +43,19 @@ public class Receiver extends Element {
     @Override
     public void update() {
         for(Port port: getReceiverPorts().values()) {
-            currentValue += port.getReceivedValue();
+            currentLoad += port.getReceivedValue();
         }
+//        System.out.printf("Receiver with id: %s -- current update load: %s%n", getId(), currentLoad);
     }
 
     @Override
     public void process() {
-        currentValue -= processRate;
-        if (currentValue < 0)
-            currentValue = 0;
+        System.out.printf("Receiver with id: %s -- current load: %s%n", getId(), currentLoad);
+        currentLoad -= processRate;
+        if (currentLoad < 0)
+            currentLoad = 0;
+
+        System.out.printf("Receiver with id: %s -- processed load: %s%n", getId(), currentLoad);
+//        logger.debug(String.format("Receiver with id: %s -- processed load: %s%n", getId(), currentLoad));
     }
 }

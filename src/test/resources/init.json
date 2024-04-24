@@ -1,6 +1,6 @@
 {
-  "receivers" : {
-    "0" : {
+  "receivers" : [
+    {
       "id": 0,
       "processRate": 10,
       "maxLoad": 10,
@@ -18,5 +18,5 @@
         }
       }
     }
-  }
+  ]
 }

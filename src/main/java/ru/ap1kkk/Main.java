@@ -9,13 +9,18 @@ import ru.ap1kkk.ports.PortType;
 import java.util.Timer;
 
 public class Main {
+    private static final int ITERATIONS = 2;
+
     public static void main(String[] args) {
         PortFactory portFactory = new PortFactory();
         ElementFactory elementFactory = new ElementFactory();
 
         Network network = new Network(portFactory, elementFactory);
-
-        Timer timer = new Timer();
-        timer.schedule(network, 100, 5000);
+        network.initialize();
+//        Timer timer = new Timer();
+//        timer.schedule(network, 100, 5000);
+        for (int i = 0; i < ITERATIONS; i++) {
+            network.run();
+        }
     }
 }

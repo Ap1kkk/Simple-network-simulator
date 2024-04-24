@@ -35,6 +35,7 @@ public class Port {
 
     @SneakyThrows
     public void deliver(int load) {
+        System.out.printf("Port with id: %s -- deliver load: %s -- to: %s%n", getId(), load, connectedPortId);
         if(type.equals(PortType.IN))
             throw new OperationNotSupportedException("IN port cannot deliver");
         connectedPort.receive(load);
@@ -45,6 +46,7 @@ public class Port {
         if(type.equals(PortType.OUT))
             throw new OperationNotSupportedException("OUT port cannot receive");
         receivedValue += load;
+        System.out.printf("Port with id: %s -- receive load: %s%n", getId(), load);
     }
 
     public void reset() {

@@ -11,7 +11,9 @@ import ru.ap1kkk.ports.PortFactory;
 import ru.ap1kkk.ports.PortType;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,34 +22,33 @@ class InitValuesTest {
     @Test
     @SneakyThrows
     public void test() {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        StringWriter writer = new StringWriter();
-//
-//        Port port = new Port(0, PortType.IN, null);
-//
-//        HashMap<Integer, Port> ports = new HashMap<>();
-//
-//        InitValues initValues = new InitValues();
-//        initValues.setPorts(ports);
-//
-//        ports.put(0, port);
-//
-//        LoadBalancer loadBalancer = new LoadBalancer(0, ports, ports);
-//
-//        HashMap<Integer, LoadBalancer> loadBalancers = new HashMap<>();
-//        loadBalancers.put(0, loadBalancer);
-//        initValues.setLoadBalancers(loadBalancers);
-//
-//        objectMapper.writeValue(writer, initValues);
-//        String convertedString = writer.toString();
-//
-//        System.out.println(convertedString);
-//
-//        StringReader reader = new StringReader(convertedString);
-//
-//        InitValues initValues1 = objectMapper.readValue(reader, InitValues.class);
-//        initValues1.getPorts();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        StringWriter writer = new StringWriter();
+
+        Port port = new Port(0, PortType.IN, null);
+
+        HashMap<Integer, Port> ports = new HashMap<>();
+
+        InitValues initValues = new InitValues();
+
+        ports.put(0, port);
+
+        LoadBalancer loadBalancer = new LoadBalancer(0, ports, ports);
+
+        List<LoadBalancer> loadBalancers = new ArrayList<>();
+        loadBalancers.add(loadBalancer);
+        initValues.setLoadBalancers(loadBalancers);
+
+        objectMapper.writeValue(writer, initValues);
+        String convertedString = writer.toString();
+
+        System.out.println(convertedString);
+
+        StringReader reader = new StringReader(convertedString);
+
+        InitValues initValues1 = objectMapper.readValue(reader, InitValues.class);
+        initValues1.getLoadBalancers();
     }
 
     @Test

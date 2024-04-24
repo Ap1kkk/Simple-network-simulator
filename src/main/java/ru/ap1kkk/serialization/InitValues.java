@@ -10,15 +10,16 @@ import ru.ap1kkk.elements.Receiver;
 import ru.ap1kkk.ports.Port;
 
 import java.util.HashMap;
+import java.util.List;
 
 @JsonAutoDetect
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class InitValues {
-    private HashMap<Integer, Receiver> receivers;
-    private HashMap<Integer, Producer> producers;
-    private HashMap<Integer, LoadBalancer> loadBalancers;
+    private List<Receiver> receivers;
+    private List<Producer> producers;
+    private List<LoadBalancer> loadBalancers;
 
     //TODO проверять на соответствие id as key with element id
 }

@@ -31,20 +31,20 @@ public class Network extends TimerTask {
 
         InitValues initValues = objectMapper.readValue(reader, InitValues.class);
 
-        for(LoadBalancer loadBalancer: initValues.getLoadBalancers().values()) {
-            addPorts(loadBalancer.getDeliverPorts().values());
-            addPorts(loadBalancer.getReceiverPorts().values());
-            elementFactory.addLoadBalancer(loadBalancer);
+        if(initValues.getLoadBalancers() != null) {
+            for(LoadBalancer loadBalancer: initValues.getLoadBalancers()) {
+                addPorts(loadBalancer.getDeliverPorts().values());
+                addPorts(loadBalancer.getReceiverPorts().values());
+                elementFactory.addLoadBalancer(loadBalancer);
+            }
         }
 
-        for(Producer producer: initValues.getProducers().values()) {
+        for(Producer producer: initValues.getProducers()) {
             addPorts(producer.getDeliverPorts().values());
-            addPorts(producer.getReceiverPorts().values());
             elementFactory.addProducer(producer);
         }
 
-        for(Receiver receiver: initValues.getReceivers().values()) {
-            addPorts(receiver.getDeliverPorts().values());
+        for(Receiver receiver: initValues.getReceivers()) {
             addPorts(receiver.getReceiverPorts().values());
             elementFactory.addReceiver(receiver);
         }
@@ -82,12 +82,13 @@ public class Network extends TimerTask {
     @Override
     public void run() {
         ++cyclesCompleted;
-        System.out.println("Task: " + cyclesCompleted);
+        System.out.println("Iteration: " + cyclesCompleted);
 
         transferData();
         earlyUpdate();
         update();
         process();
+        resetPortValues();
     }
 
     private void transferData() {
@@ -138,4 +139,15 @@ public class Network extends TimerTask {
         }
     }
 
+    private void resetPortValues() {
+        for(Producer producer: ElementFactory.getProducerPool().values()){
+            producer.resetPortValues();
+        }
+        for(LoadBalancer loadBalancer: ElementFactory.getLoadBalancerPool().values()) {
+            loadBalancer.resetPortValues();
+        }
+        for(Receiver receiver: ElementFactory.getReceiverPool().values()) {
+            receiver.resetPortValues();
+        }
+    }
 }
