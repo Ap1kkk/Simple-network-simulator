@@ -1,6 +1,7 @@
 package ru.ap1kkk.network;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import ru.ap1kkk.elements.ElementFactory;
@@ -10,6 +11,7 @@ import ru.ap1kkk.elements.Receiver;
 import ru.ap1kkk.ports.Port;
 import ru.ap1kkk.ports.PortFactory;
 import ru.ap1kkk.serialization.InitValues;
+import ru.ap1kkk.statistic.StatsMode;
 
 import java.io.*;
 import java.util.Collection;
@@ -17,10 +19,16 @@ import java.util.TimerTask;
 
 @RequiredArgsConstructor
 public class Network extends TimerTask {
+
 //    private final int maxCycles;
+    private final String initFile;
     private final PortFactory portFactory;
     private final ElementFactory elementFactory;
-
+    private final static int DEFAULT_ITERATIONS = 10;
+    @Getter
+    private int iterations = 0;
+    @Getter
+    private StatsMode statsMode;
     private int cyclesCompleted = 0;
 
     @SneakyThrows
@@ -30,6 +38,12 @@ public class Network extends TimerTask {
         StringReader reader = new StringReader(jsonString.toString());
 
         InitValues initValues = objectMapper.readValue(reader, InitValues.class);
+
+        statsMode = initValues.getStatsMode();
+        if(initValues.getIterations() != null)
+            iterations = initValues.getIterations();
+        else
+            iterations = DEFAULT_ITERATIONS;
 
         if(initValues.getLoadBalancers() != null) {
             for(LoadBalancer loadBalancer: initValues.getLoadBalancers()) {
@@ -49,15 +63,17 @@ public class Network extends TimerTask {
             elementFactory.addReceiver(receiver);
         }
 
-        portFactory.fillConnectedPorts();
-        portFactory.validatePorts();
+        portFactory.init();
+
+        initReceivers();
+        validateElements();
     }
 
     private String getJsonString() {
         StringBuilder jsonString = new StringBuilder();
 
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        try (InputStream is = classloader.getResourceAsStream("init.json")) {
+        try (InputStream is = classloader.getResourceAsStream(initFile)) {
 
             try (InputStreamReader isr = new InputStreamReader(is);
                  BufferedReader br = new BufferedReader(isr);) {
@@ -76,6 +92,12 @@ public class Network extends TimerTask {
     private void addPorts(Collection<Port> ports) {
         for(Port port: ports) {
             portFactory.addExistingPort(port);
+        }
+    }
+
+    private void initReceivers() {
+        for(Receiver receiver: ElementFactory.getReceiverPool().values()) {
+            receiver.init();
         }
     }
 
@@ -148,6 +170,18 @@ public class Network extends TimerTask {
         }
         for(Receiver receiver: ElementFactory.getReceiverPool().values()) {
             receiver.resetPortValues();
+        }
+    }
+
+    private void validateElements() {
+        for(Producer producer: ElementFactory.getProducerPool().values()){
+            producer.validate();
+        }
+        for(LoadBalancer loadBalancer: ElementFactory.getLoadBalancerPool().values()) {
+            loadBalancer.validate();
+        }
+        for(Receiver receiver: ElementFactory.getReceiverPool().values()) {
+            receiver.validate();
         }
     }
 }

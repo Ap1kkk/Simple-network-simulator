@@ -71,4 +71,11 @@ public class ElementFactory {
             throw new Exception("Receiver already exists with id: " + receiver.getId());
         receiverPool.put(receiver.getId(), receiver);
     }
+
+    public void clear() {
+        ID_COUNTER = 0;
+        loadBalancerPool.clear();
+        producerPool.clear();
+        receiverPool.clear();
+    }
 }

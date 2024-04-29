@@ -3,6 +3,7 @@ package ru.ap1kkk.serialization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.ap1kkk.elements.ElementFactory;
 import ru.ap1kkk.elements.LoadBalancer;
@@ -18,7 +19,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InitValuesTest {
+    private PortFactory portFactory;
+    private ElementFactory elementFactory;
 
+    @BeforeEach
+    void setUp() {
+        elementFactory = new ElementFactory();
+        portFactory = new PortFactory();
+        elementFactory.clear();
+        portFactory.clear();
+    }
     @Test
     @SneakyThrows
     public void test() {
@@ -80,16 +90,13 @@ class InitValuesTest {
     @Test
     @SneakyThrows
     public void testPortFactory() {
-        PortFactory portFactory = new PortFactory();
-
         Port port1 = new Port(0, PortType.IN, null);
         Port port2 = new Port(1, PortType.OUT, 0);
 
         portFactory.addExistingPort(port1);
         portFactory.addExistingPort(port2);
 
-        portFactory.fillConnectedPorts();
-        portFactory.validatePorts();
+        portFactory.init();
 
         HashMap<Integer, Port> receiverPool = PortFactory.getReceiverPool();
         PortFactory.getReceiverPool();
@@ -98,8 +105,6 @@ class InitValuesTest {
     @Test
     @SneakyThrows
     public void testElementFactory() {
-        ElementFactory elementFactory = new ElementFactory();
-
         Port port1 = new Port(0, PortType.IN, null);
         Port port2 = new Port(1, PortType.OUT, 0);
 

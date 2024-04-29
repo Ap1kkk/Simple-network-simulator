@@ -4,23 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="789bb720-c62f-4e7a-bade-cb199a81fa28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="789bb720-c62f-4e7a-bade-cb199a81fa28" name="Changes" comment="minimum working version">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/AlgorithmType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/ports/Metadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/statistic/StatisticCollector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/statistic/StatsMode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/init_base_setup_1P(20)_1LB(RR)_1R(8)_1R(13).json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/init_base_setup_1P(20)_1LB(WRR)_1R(8)_1R(13).json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/init_setup_1P_1LB(RR)_2R_1LB(WRR)_2R.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ap1kkk/network/NetworkTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_load_balancer_no_deliver_ports.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_load_balancer_no_receiver_ports.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_port_out.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_producer_no_deliver_ports.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_producer_produce_rate_less_than_zero.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_failed_receiver_no_receiver_ports.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/init_success.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/ElementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/ElementFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/LoadBalancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/LoadBalancer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Producer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/network/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/network/Network.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/ports/Port.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/ports/Port.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/ports/PortFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/ports/PortFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/serialization/InitValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ap1kkk/serialization/InitValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/init.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/init.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/init.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/init.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/init.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,17 +70,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2fX6rzRAH4MhAySCKLCjmXMB1ww" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -81,8 +95,20 @@
     "Gradle.InitValuesTest.testElementFactory.executor": "Run",
     "Gradle.InitValuesTest.testFactory.executor": "Debug",
     "Gradle.InitValuesTest.testParse.executor": "Debug",
+    "Gradle.InitValuesTest.testPortFactory.executor": "Debug",
+    "Gradle.NetworkTest.executor": "Run",
+    "Gradle.NetworkTest.initialize.executor": "Run",
+    "Gradle.NetworkTest.initialize_fail_load_balancer_no_deliver_ports.executor": "Run",
+    "Gradle.NetworkTest.initialize_fail_load_balancer_no_receiver_ports.executor": "Run",
+    "Gradle.NetworkTest.initialize_fail_producer_no_deliver_ports.executor": "Run",
+    "Gradle.NetworkTest.initialize_fail_producer_produce_rate_less_than_zero.executor": "Run",
+    "Gradle.NetworkTest.initialize_fail_receiver_no_receiver_ports.executor": "Run",
+    "Gradle.NetworkTest.initialize_success.executor": "Run",
     "Gradle.TP-Project [:Main.main()].executor": "Run",
     "Gradle.TP-Project [compileJava].executor": "Run",
+    "Gradle.TP-Project [run].executor": "Run",
+    "Gradle.TP-Project.executor": "Run",
+    "Gradle.Tests in 'ru.ap1kkk.TP-Project.test'.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -102,33 +128,38 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Egor\IdeaProjects\TP-Project\src\main\resources" />
+      <recent name="C:\Users\Egor\IdeaProjects\TP-Project\src\test\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.ap1kkk.network" />
       <recent name="ru.ap1kkk.serialization" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle --refresh-dependencies compileJava" />
+      <command value="gradle --quiet " />
+      <command value="gradle run --quiet" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Programm">
-    <configuration name="Programm" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.Network-simulator">
+    <configuration name="Network-simulator" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.ap1kkk.Main" />
       <module name="ru.ap1kkk.TP-Project.main" />
+      <option name="PROGRAM_PARAMETERS" value="--console-plain --quiet" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InitValuesTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="InitValuesTest.testPortFactory" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--quiet" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -136,7 +167,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.ap1kkk.serialization.InitValuesTest.test&quot;" />
+            <option value="&quot;ru.ap1kkk.serialization.InitValuesTest.testPortFactory&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -147,12 +178,12 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="InitValuesTest.testElementFactory" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="NetworkTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--quiet" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -160,7 +191,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.ap1kkk.serialization.InitValuesTest.testElementFactory&quot;" />
+            <option value="&quot;ru.ap1kkk.network.NetworkTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -171,12 +202,12 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="InitValuesTest.testFactory" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="NetworkTest.initialize_fail_load_balancer_no_deliver_ports" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--quiet" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -184,7 +215,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.ap1kkk.serialization.InitValuesTest.testFactory&quot;" />
+            <option value="&quot;ru.ap1kkk.network.NetworkTest.initialize_fail_load_balancer_no_deliver_ports&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -195,12 +226,12 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="InitValuesTest.testParse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="NetworkTest.initialize_fail_load_balancer_no_receiver_ports" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--quiet" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -208,7 +239,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.ap1kkk.serialization.InitValuesTest.testParse&quot;" />
+            <option value="&quot;ru.ap1kkk.network.NetworkTest.initialize_fail_load_balancer_no_receiver_ports&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -219,18 +250,40 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="TP-Project [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'ru.ap1kkk.TP-Project.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--refresh-dependencies" />
+        <option name="scriptParameters" value="--quiet" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="compileJava" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--quiet" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="--console-plain" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -242,20 +295,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Programm" />
-      <item itemvalue="Gradle.InitValuesTest.test" />
-      <item itemvalue="Gradle.InitValuesTest.testElementFactory" />
-      <item itemvalue="Gradle.InitValuesTest.testFactory" />
-      <item itemvalue="Gradle.InitValuesTest.testParse" />
-      <item itemvalue="Gradle.TP-Project [compileJava]" />
+      <item itemvalue="Application.Network-simulator" />
+      <item itemvalue="Gradle.InitValuesTest.testPortFactory" />
+      <item itemvalue="Gradle.Tests in 'ru.ap1kkk.TP-Project.test'" />
+      <item itemvalue="Gradle.NetworkTest" />
+      <item itemvalue="Gradle.NetworkTest.initialize_fail_load_balancer_no_deliver_ports" />
+      <item itemvalue="Gradle.NetworkTest.initialize_fail_load_balancer_no_receiver_ports" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.InitValuesTest.test" />
-        <item itemvalue="Gradle.InitValuesTest.testElementFactory" />
-        <item itemvalue="Gradle.InitValuesTest.testFactory" />
-        <item itemvalue="Gradle.InitValuesTest.testParse" />
-        <item itemvalue="Gradle.TP-Project [compileJava]" />
+        <item itemvalue="Gradle.Tests in 'ru.ap1kkk.TP-Project.test'" />
+        <item itemvalue="Gradle.InitValuesTest.testPortFactory" />
+        <item itemvalue="Gradle.NetworkTest" />
+        <item itemvalue="Gradle.NetworkTest.initialize_fail_load_balancer_no_receiver_ports" />
+        <item itemvalue="Gradle.NetworkTest.initialize_fail_load_balancer_no_deliver_ports" />
       </list>
     </recent_temporary>
   </component>
@@ -268,62 +321,104 @@
       <option name="presentableId" value="Default" />
       <updated>1713895529807</updated>
       <workItem from="1713895530901" duration="15027000" />
-      <workItem from="1713935284801" duration="7131000" />
+      <workItem from="1713935284801" duration="7856000" />
+      <workItem from="1713948634886" duration="2382000" />
+      <workItem from="1713978023488" duration="272000" />
+      <workItem from="1714287025341" duration="17496000" />
+      <workItem from="1714374278479" duration="6431000" />
     </task>
+    <task id="LOCAL-00001" summary="minimum working version">
+      <option name="closed" value="true" />
+      <created>1713945035424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713945035424</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="minimum working version" />
+    <option name="LAST_COMMIT_MESSAGE" value="minimum working version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java</url>
-          <line>50</line>
+          <line>60</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java</url>
-          <line>76</line>
+          <line>86</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java</url>
-          <line>94</line>
+          <line>101</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java</url>
-          <line>87</line>
+          <line>95</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/serialization/InitValuesTest.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/network/NetworkTest.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/ap1kkk/network/NetworkTest.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/network/Network.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="13" />
+          <line>65</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="15" />
+          <line>39</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/Receiver.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/network/Network.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/elements/LoadBalancer.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/ap1kkk/network/Network.java</url>
           <line>41</line>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

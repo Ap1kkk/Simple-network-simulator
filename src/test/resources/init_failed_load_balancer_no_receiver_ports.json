@@ -28,13 +28,6 @@
   "loadBalancers" : [
     {
       "id": 2,
-      "algorithm": "RR",
-      "receiverPorts": {
-        "2": {
-          "id": 2,
-          "type": "IN"
-        }
-      },
       "deliverPorts": {
         "3": {
           "id": 3,
@@ -52,7 +45,7 @@
   "producers" : [
     {
       "id": 3,
-      "produceRate": 20,
+      "produceRate": 25,
       "deliverPorts": {
         "5": {
           "id": 5,

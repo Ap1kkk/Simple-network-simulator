@@ -1,16 +1,21 @@
 package ru.ap1kkk.elements;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.SneakyThrows;
+import ru.ap1kkk.ports.Metadata;
 import ru.ap1kkk.ports.Port;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 @JsonAutoDetect
 public class LoadBalancer extends Element {
     private int lastDeliveredPortIndex = -1;
     private int portsCollectedValue = 0;
+    @JsonProperty("algorithm")
+    private AlgorithmType algorithm;
 
     private LoadBalancer() {
         super(null,null, null);
@@ -29,28 +34,38 @@ public class LoadBalancer extends Element {
 
     @Override
     public void earlyUpdate() {
-        collectPortsValue();
+        if(algorithm.equals(AlgorithmType.WRR))
+            weightedRoundRobin();
+        else
+            roundRobin();
+    }
 
-        Collection<Port> deliverPorts = getDeliverPorts().values();
+    @Override
+    public void update() {
+    }
 
-        // Если нет портов доставки, выходим из метода
-        if (deliverPorts.isEmpty()) {
-            return;
-        }
+    @Override
+    public void process() {
+    }
 
-        // Определяем индекс следующего порта
-        lastDeliveredPortIndex++;
-        if (lastDeliveredPortIndex >= deliverPorts.size()) {
-            lastDeliveredPortIndex = 0; // Возвращаемся к началу списка
-        }
+    @Override
+    @SneakyThrows
+    public void validate() {
+        if(getReceiverPorts() == null || getReceiverPorts().isEmpty()
+                || getDeliverPorts() == null || getDeliverPorts().isEmpty())
+            throw new Exception(String.format("LoadBalancer %s: receiver and deliver ports must not be null", getId()));
+    }
 
-        // Получаем порт, на который будем направлять данные
-        deliverPorts.stream()
-                .skip(lastDeliveredPortIndex)
-                .findFirst()
-                .ifPresent(
-                        nextPort -> nextPort.deliver(portsCollectedValue)
-                );
+    private int calculatePortWeight(Port port) {
+        Metadata metadata = port.getConnectedPort().getMetadata();
+        int maxLoad = metadata.elementMaxLoad();
+        int currentLoad = metadata.elementCurrentLoad();
+        int processRate = metadata.elementProcessRate();
+
+        if(currentLoad <= maxLoad)
+            return processRate + (maxLoad - currentLoad);
+        else
+            return processRate;
     }
 
     private void collectPortsValue() {
@@ -60,11 +75,55 @@ public class LoadBalancer extends Element {
         }
     }
 
-    @Override
-    public void update() {
+    private void roundRobin() {
+        collectPortsValue();
+
+        Collection<Port> deliverPorts = getDeliverPorts().values();
+
+        if (deliverPorts.isEmpty()) {
+            return;
+        }
+
+        lastDeliveredPortIndex++;
+        if (lastDeliveredPortIndex >= deliverPorts.size()) {
+            lastDeliveredPortIndex = 0;
+        }
+
+        deliverPorts.stream()
+                .skip(lastDeliveredPortIndex)
+                .findFirst()
+                .ifPresent(
+                        nextPort -> nextPort.deliver(portsCollectedValue)
+                );
     }
 
-    @Override
-    public void process() {
+    private void weightedRoundRobin() {
+        collectPortsValue();
+
+        // Если нет портов доставки, выходим из метода
+        if (getDeliverPorts().isEmpty()) {
+            return;
+        }
+        Collection<Port> deliverPorts = getDeliverPorts().values();
+        Iterator<Port> deliverPortsIterator = deliverPorts.iterator();
+
+
+        // Обход портов доставки с учетом весов
+        while (portsCollectedValue > 0) {
+            if (!deliverPortsIterator.hasNext()) {
+                deliverPortsIterator = deliverPorts.iterator(); // Возвращаемся к началу списка
+            }
+
+            Port nextPort = deliverPortsIterator.next();
+            int portWeight = calculatePortWeight(nextPort);
+
+            if (portsCollectedValue >= portWeight) {
+                nextPort.deliver(portWeight);
+                portsCollectedValue -= portWeight;
+            } else {
+                nextPort.deliver(portsCollectedValue);
+                portsCollectedValue = 0;
+            }
+        }
     }
 }

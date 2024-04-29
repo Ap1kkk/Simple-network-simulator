@@ -1,0 +1,114 @@
+{
+  "statsMode": "UI",
+  "iterations": 100,
+  "receivers" : [
+    {
+      "id": 0,
+      "processRate": 13,
+      "maxLoad": 20,
+      "receiverPorts": {
+        "0": {
+          "id": 0,
+          "type": "IN"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "processRate": 8,
+      "maxLoad": 10,
+      "receiverPorts": {
+        "1": {
+          "id": 1,
+          "type": "IN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "processRate": 13,
+      "maxLoad": 20,
+      "receiverPorts": {
+        "6": {
+          "id": 6,
+          "type": "IN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "processRate": 8,
+      "maxLoad": 10,
+      "receiverPorts": {
+        "7": {
+          "id": 7,
+          "type": "IN"
+        }
+      }
+    }
+  ],
+  "loadBalancers" : [
+    {
+      "id": 2,
+      "algorithm": "RR",
+      "receiverPorts": {
+        "4": {
+          "id": 4,
+          "type": "IN"
+        }
+      },
+      "deliverPorts": {
+        "2": {
+          "id": 2,
+          "type": "OUT",
+          "connectedPortId": 0
+        },
+        "3": {
+          "id": 3,
+          "type": "OUT",
+          "connectedPortId": 1
+        }
+      }
+    },
+    {
+      "id": 5,
+      "algorithm": "WRR",
+      "receiverPorts": {
+        "10": {
+          "id": 10,
+          "type": "IN"
+        }
+      },
+      "deliverPorts": {
+        "8": {
+          "id": 8,
+          "type": "OUT",
+          "connectedPortId": 6
+        },
+        "9": {
+          "id": 9,
+          "type": "OUT",
+          "connectedPortId": 7
+        }
+      }
+    }
+  ],
+  "producers" : [
+    {
+      "id": 6,
+      "produceRate": 20,
+      "deliverPorts": {
+        "5": {
+          "id": 5,
+          "type": "OUT",
+          "connectedPortId": 4
+        },
+        "11": {
+          "id": 11,
+          "type": "OUT",
+          "connectedPortId": 10
+        }
+      }
+    }
+  ]
+}

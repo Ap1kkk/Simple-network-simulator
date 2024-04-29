@@ -44,7 +44,7 @@ public class PortFactory {
             deliverPool.put(port.getId(), port);
     }
 
-    public void validatePorts() {
+    private void validatePorts() {
         for(Port port: deliverPool.values()) {
             port.validate();
         }
@@ -53,7 +53,7 @@ public class PortFactory {
         }
     }
 
-    public void fillConnectedPorts() {
+    private void fillConnectedPorts() {
         for(Port port: deliverPool.values()) {
             Port receiver = findReceiver(port.getConnectedPortId());
             port.fillConnectedPort(receiver);
@@ -74,5 +74,16 @@ public class PortFactory {
             return port;
 
         return deliverPool.get(id);
+    }
+
+    public void clear() {
+        ID_COUNTER = 0;
+        receiverPool.clear();
+        deliverPool.clear();
+    }
+
+    public void init() {
+        fillConnectedPorts();
+        validatePorts();
     }
 }

@@ -30,6 +30,7 @@ public abstract class Element {
     public abstract void earlyUpdate();
     public abstract void update();
     public abstract void process();
+    public abstract void validate();
 
     public void resetPortValues() {
         resetPortValues(receiverPorts);

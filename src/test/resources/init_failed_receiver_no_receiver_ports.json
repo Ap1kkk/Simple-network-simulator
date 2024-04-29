@@ -5,13 +5,7 @@
     {
       "id": 0,
       "processRate": 8,
-      "maxLoad": 10,
-      "receiverPorts": {
-        "0": {
-          "id": 0,
-          "type": "IN"
-        }
-      }
+      "maxLoad": 10
     },
     {
       "id": 1,
@@ -28,7 +22,6 @@
   "loadBalancers" : [
     {
       "id": 2,
-      "algorithm": "RR",
       "receiverPorts": {
         "2": {
           "id": 2,
@@ -52,7 +45,7 @@
   "producers" : [
     {
       "id": 3,
-      "produceRate": 20,
+      "produceRate": 25,
       "deliverPorts": {
         "5": {
           "id": 5,

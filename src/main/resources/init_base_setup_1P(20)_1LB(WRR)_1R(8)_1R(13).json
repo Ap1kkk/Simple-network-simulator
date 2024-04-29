@@ -28,7 +28,7 @@
   "loadBalancers" : [
     {
       "id": 2,
-      "algorithm": "RR",
+      "algorithm": "WRR",
       "receiverPorts": {
         "2": {
           "id": 2,
